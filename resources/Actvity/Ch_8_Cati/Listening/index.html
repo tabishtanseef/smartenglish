@@ -1,0 +1,265 @@
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Mukta" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<style>
+body {
+background-image:url('img/3.jpg');
+background-repeat:no-repeat;
+background-size:cover;
+background-attachment:fixed;
+background-position:center;
+}
+h2, h3{
+font-weight:bold;
+}
+.where{
+margin:10px;
+text-align:center;
+padding:20px;
+font-family: 'Mukta', sans-serif;
+background-image:url('img/yellow.jpg');
+    box-shadow: 2px 2px 5px #f8fb7b;
+    border: 2px solid #ffd50f;
+border-radius:20px;
+}
+
+.answer{
+text-align:center;
+font-size:26px;
+font-family: 'Mukta', sans-serif;
+}
+.question{
+font-size:20px;
+font-weight:bold;
+font-family: 'Mukta', sans-serif;
+}
+.content{
+margin:10px;
+text-align:left;
+padding:20px;
+font-family: 'Mukta', sans-serif;
+    background: #fdffb7;
+    box-shadow: 2px 2px 5px #dab02e;
+    border: 2px solid #eaef56;
+border-radius:20px;
+}
+.contents{
+margin:10px;
+text-align:left;
+padding:20px;
+font-family: 'Mukta', sans-serif;
+background-image:url('img/yellow.jpg');
+    box-shadow: 3px 3px 5px #d0d41f;
+    border: 2px solid #ffc08c;
+border-radius:20px;
+}
+.hidden{
+display:none;
+}
+#block {
+  opacity:0;
+  transition:opacity 1s ease-in;*
+    -webkit-transition: opacity 1s  ease-in;
+       -moz-transition: opacity 1s  ease-in;
+         -o-transition: opacity 1s  ease-in;
+}
+#block.show {
+  opacity:1;
+}
+#block {
+    opacity: 0;
+}
+#blocks {
+  opacity:0;
+  transition:opacity 1s ease-in;*
+    -webkit-transition: opacity 1s  ease-in;
+       -moz-transition: opacity 1s  ease-in;
+         -o-transition: opacity 1s  ease-in;
+}
+#blocks.show {
+  opacity:1;
+}
+#blocks {
+    opacity: 0;
+}
+.block {
+    display: block;
+    width: 60%;
+    border: none;
+	margin-left:50px;
+	margin-bottom:50px;
+	margin-top:10px;
+    background-color: #ffffff;
+	font-family:Comic Sans, Comic Sans MS, cursive;
+    padding: 14px 28px;
+    font-size: 20px;
+	border-radius:20px;
+	border:2px solid;
+    cursor: pointer;
+    text-align: center;
+}
+@media only screen and (max-width: 480px) {
+  .mo {
+    width: 70%;
+  }
+}
+</style>
+</head>
+<body>
+<div id="block">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 where">
+			<h2>SMART LANGUAGE</h2>
+		</div>
+	</div>
+	<div class="contents">
+	<br>
+	<center><h3>Choose wheather the given sentence is Active voice or Passive voice</h3></center><br>
+	<div class="row content">
+		<div class="col-sm-8 question">1.&nbsp;&nbsp; Mrs. Gupta locks the doors every night. </div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="1" onclick="go(1,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="11" onclick="no(11,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row content">
+		<div class="col-sm-8 question">2.&nbsp;&nbsp; Our car was serviced by the mechanic at the service station, last week.</div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="12" onclick="no(12,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="2" onclick="go(2,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row content">
+		<div class="col-sm-8 question">3.&nbsp;&nbsp; Petrol prices have been increased by the government.</div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="13" onclick="no(13,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="3" onclick="go(3,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row content">
+		<div class="col-sm-8 question">4.&nbsp;&nbsp; The house will have been painted by the painters by Tuesday, next week.</div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="14" onclick="no(14,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="4" onclick="go(4,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row content">
+		<div class="col-sm-8 question">5.&nbsp;&nbsp; Their work had been done by them before bed time.</div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="15" onclick="no(15,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="5" onclick="go(5,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row content">
+		<div class="col-sm-8 question">6.&nbsp;&nbsp; They will return the library books next week.</div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="6" onclick="go(6,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="16" onclick="no(16,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row content">
+		<div class="col-sm-8 question">7.&nbsp;&nbsp; The house has been dusted and cleaned by the maid.</div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="17" onclick="no(17,true)" src="img/true1.png" onmouseover="this.src='img/true0.png'" onmouseout="this.src='img/true1.png'" style="margin-top:10px; width:100%;"></center></div>
+		<div class="col-sm-2 answer"><center><img class="mo" id="7" onclick="go(7,'false')" src="img/false1.png" onmouseover="this.src='img/false0.png'" onmouseout="this.src='img/false1.png'" style="margin-top:10px; width:100%;"></center></div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"><center><img id="" onclick="window.location.reload()" src="img/reset.png" onmouseover="this.src='img/reset1.png'" onmouseout="this.src='img/reset.png'" style="margin-top:10px; width:60%;"></center></div>
+		<div class="col-md-4"><center><img id="submit"onclick="done()" src="img/submit.png" onmouseover="this.src='img/submit1.png'" onmouseout="this.src='img/submit.png'" style="margin-top:10px; width:60%;"></center></div>
+		<div class="col-md-4"><center><img id="sol"  onclick="show()" src="img/sol.png" onmouseover="this.src='img/sol1.png'" onmouseout="this.src='img/sol.png'" style="margin-top:10px; width:60%;"></center></div>
+	</div>
+	</div>
+</div>
+</div>
+
+<div id="blocks">
+	<div class="crow ">
+	<img src="img/Welldone.gif" height="auto" width="100%">
+	</div>
+</div>
+
+
+<audio src="audio/well-done.mp3" id="audio1"></audio>
+<audio src="audio/try-again.mp3" id="audio2"></audio>
+
+</body>
+<script>
+$(document).ready(function load(){
+    var $block = $("#block");
+	$block.toggleClass('show');
+	$("#sol").css("pointer-events", "none");
+});
+
+
+var q,w,e,r,t,s,v;
+function go(a,n){
+var b = a+10;
+var cor = n;
+console.log(n);
+$('#'+b).css("pointer-events", "none");
+$('#'+a).attr("src", "img/"+cor+"2.png");
+$('#'+a).attr("onmouseover", "img/"+cor+"2.png");
+$('#'+a).attr("onmouseout", "img/"+cor+"2.png");
+
+
+if(a==1){
+ q = 1;
+}
+else if (a==2){
+ w = 2;
+}
+else if (a==3){
+ e = 3;
+}
+else if (a==4){
+ r = 4;
+}
+else if (a==5){
+ t = 5;
+}
+else if (a==6){
+ s = 6;
+}
+else {
+ v = 7;
+}
+}
+
+function done(){
+$("#sol").css("pointer-events", "auto");
+if(q!=1 && w!=2 && e!=3 && r!=4 && t!=5 && s!=6 && v!=7 ){
+$("#sol").css("pointer-events", "none");
+ }
+	if(q==1 && w==2 && e==3 && r==4 && t==5 && s==6 && v==7 ){
+	var audio = document.getElementById('audio1');
+	audio.play();
+	var $block = $("#block");
+		$block.toggleClass('show');
+		var $blocks = $("#blocks");
+		$blocks.toggleClass('show');
+	setInterval(function(){ $('#block').addClass('hidden'); 
+		},300);
+		setInterval(function(){ 
+		window.location="../index.html";
+		},3000);
+	}
+	else{
+	var audio = document.getElementById('audio2');
+	audio.play();
+	}
+}
+function show(){
+$("#submit").css("pointer-events", "none");
+go(1,'true');
+go(2,'false');
+go(3,'false');
+go(4,'false');
+go(5,'false');
+go(6,'true');
+go(7,'false');
+}
+function no(b,n){
+var c = b-10;
+var wro=n;
+console.log(c);
+$('#'+c).css("pointer-events", "none");
+$('#'+b).attr("src", "img/"+wro+"3.png");
+$('#'+b).attr("onmouseover", "img/"+wro+"3.png");
+$('#'+b).attr("onmouseout", "img/"+wro+"3.png");
+
+}
+
+</script>
+</html>

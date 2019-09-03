@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title></title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<main role="main">
+<!-- content for page -->
+<form action="#" method="post" id="form">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<div class="content-box">
+<div class="heading">Drag the words from the box and fill in the blanks. </div>
+<div class="top-bg"></div>
+<div class="center-bg content-sec">
+    <div class="match-box">
+    <div class="match-pic-box">
+    <div class="pic-box"><span class="count">1.</span> The Principal has <span class="result-box ans1" data-ans="4"></span> issue identity cards to all the teachers.</div>    
+    </div>
+    </div>
+
+    <div class="match-box">
+    <div class="match-pic-box">
+    <div class="pic-box"><span class="count">2.</span> The naughty boy <span class="result-box ans2" data-ans="3"></span> the bed and threw the pillows on the floor.</div>    
+    </div>
+    </div>
+
+    <div class="match-box">
+    <div class="match-pic-box"> 
+    <div class="pic-box"><span class="count">3.</span> Are you <span class="result-box ans3" data-ans="2"></span> complete your work or are you watching TV?</div>    
+    </div>
+    </div>
+
+    <div class="match-box">
+    <div class="match-pic-box">
+    <div class="pic-box"><span class="count">4.</span> That car will <span class="result-box ans4" data-ans="5"></span> something if the driver doesn’t drive at a proper speed.</div>   
+    </div>
+    </div>
+
+    <div class="match-box">
+    <div class="match-pic-box">
+    <div class="pic-box"><span class="count">5.</span> We must <span class="result-box ans5" data-ans="1"></span> the Principal about the speed at which the bus driver drives our bus.</div>    
+    </div>
+    </div>
+	
+   <div class="heading1">    	
+		<div class="text-drag" data-ans="1">complain to</div>
+		<div class="text-drag" data-ans="2">trying to</div>
+		<div class="text-drag" data-ans="3">jumped on</div>        
+		<div class="text-drag" data-ans="4">decided to</div>
+		<div class="text-drag" data-ans="5">crash into</div> 
+  </div>
+    <div class="match-box text-center" style="margin-top:20px;">
+        <input type="button" name="button" value="Answer" class="ansBtn">    
+        <input type="button" name="button" onClick="window.location.reload()" value="Reset" class="reBtn">       
+    </div>
+</div>
+<div class="bottom-bg">&nbsp;</div>
+</div>
+
+</div>
+</div>
+</div>
+</form>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">       
+      <div class="modal-body text-center">
+       	<h4>Well Done</h4>
+      </div>     
+    </div>
+  </div>
+</div>
+</main>
+<iframe src="audio/drag-and-drop.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+<audio id="yes" preload="none">
+    <source src="audio/yes.mp3"></source>
+    <source src="audio/yes.ogg"></source>
+    HTML5 Needed
+</audio>
+<audio id="no" preload="none">
+    <source src="audio/no.mp3"></source>
+    <source src="audio/no.ogg"></source>
+    HTML5 Needed
+</audio>
+<audio id="welldone" preload="none">
+    <source src="audio/welldone.mp3"></source>
+    <source src="audio/welldone.ogg"></source>
+    HTML5 Needed
+</audio>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.touch.min.js"></script>
+<script>
+$("form").trigger('reset');
+$(document).ready(function(e){
+ $(function() {
+    $(".text-drag").draggable({
+        opacity: .4,
+        create: function(){$(this).data('position',$(this).position()); },
+        cursor:'move',
+        start:function(){$(this).stop(true,true)},
+        revert: 'invalid',
+    });
+    $('.result-box').droppable({
+        activeClass: 'ui-state-hover',
+        hoverClass: 'ui-state-active',
+        over: function(event, ui) {
+            $(ui.helper).unbind("mouseup");
+        },
+        drop:function(event, ui){
+            if($(this).data('ans')==$(ui.draggable).data('ans')) {
+                $(ui.draggable).addClass('correct')
+                playSoundYes();
+                snapToMiddle(ui.draggable,$(this));
+                showAlert()
+            } else {
+                snapToStart(ui.draggable,$(this)); 
+                playSoundNo();
+            }            
+        },
+        out:function(event, ui){
+            $(ui.helper).mouseup(function() {
+                snapToStart(ui.draggable,$(this)); 
+            });
+        }
+    });
+});
+function showAlert()
+{
+  if($(".text-drag").length == $(".correct").length) {
+		setTimeout(function(){			
+		$("#exampleModalLong").modal("toggle");
+			$("#welldone").trigger('load');
+			$("#welldone").trigger('play');
+		}, 3000);						
+		setTimeout(function(){
+			$("#exampleModalLong").modal("toggle");			
+		}, 6000);
+  }
+}
+function snapToMiddle(dragger, target){
+    var topMove = target.position().top - dragger.data('position').top + (target.outerHeight(true) - dragger.outerHeight(true)) / 2;
+    var leftMove= target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
+    dragger.animate({top:topMove,left:leftMove},{duration:600,easing:'easeOutBack'});
+}
+function snapToStart(dragger, target){
+    dragger.animate({top:0,left:0},{duration:600,easing:'easeOutBack'});
+}
+ function playSoundYes(){
+    $("#no").trigger('pause');
+    $("#no").trigger('load');
+    $("#yes").trigger('load');
+    $("#yes").trigger('play');
+}
+function playSoundNo(){
+    $("#yes").trigger('pause');
+    $("#yes").trigger('load');
+    $("#no").trigger('load');
+    $("#no").trigger('play');
+}
+$("input[value=Answer]").click(function(){	
+		$(".ans1").html("decided to");
+		$(".ans2").html("jumped on");
+		$(".ans3").html("trying to");		
+		$(".ans4").html("crash into");								 
+		$(".ans5").html("complain to");								 
+        $(".ui-draggable").html("&nbsp;");
+});
+})
+</script>   
+</body>
+</html>
